@@ -2,7 +2,6 @@ package com.wellness.bot.Wellness_bot.controller;
 
 import com.microsoft.bot.builder.*;
 import com.microsoft.bot.schema.Activity;
-import com.microsoft.bot.builder.TurnContext;
 import com.microsoft.bot.schema.ActivityTypes;
 import com.microsoft.bot.builder.MessageFactory;
 import com.microsoft.bot.schema.ResourceResponse;
@@ -15,15 +14,15 @@ import java.util.concurrent.CompletableFuture;
 public class BotController extends ActivityHandler {
 
     @PostMapping
-    public CompletableFuture<ResourceResponse> handleIncoming(@RequestBody TurnContext turnContext) {
-        if (turnContext.getActivity().getType().equals(ActivityTypes.MESSAGE)) {
-            return handleUserMessage(turnContext);
+    public CompletableFuture<ResourceResponse> handleIncoming(@RequestBody Activity activity, TurnContext turnContext) {
+        if (activity.getType().equals(ActivityTypes.MESSAGE)) {
+            return handleUserMessage(activity, turnContext);
         }
         return CompletableFuture.completedFuture(null);
     }
 
-    private CompletableFuture<ResourceResponse> handleUserMessage(TurnContext  turnContext) {
-        String userMessage = turnContext.getActivity().getText().toLowerCase();
+    private CompletableFuture<ResourceResponse> handleUserMessage(Activity activity, TurnContext turnContext) {
+        String userMessage = activity.getText().toLowerCase();
         String response;
 
         switch (userMessage) {
