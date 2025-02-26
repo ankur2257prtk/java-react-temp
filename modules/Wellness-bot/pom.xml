@@ -87,6 +87,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version> <!-- Use a version compatible with Spring Boot -->
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- Microsoft Graph API -->
 		<dependency>
 			<groupId>com.microsoft.graph</groupId>
